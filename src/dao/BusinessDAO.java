@@ -18,7 +18,7 @@ public class BusinessDAO {
     }
 
     private Connection connect() {
-        String url = "jdbc:sqlite:C://Users/hclar/Documents/Databases/" + databaseFilename;
+        String url = "jdbc:sqlite:.data/" + databaseFilename;
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
