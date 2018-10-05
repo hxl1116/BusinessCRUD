@@ -1,0 +1,14 @@
+Business Product CRUD Application
+
+Options
+- Create products
+- Read products
+- Update products
+- Delete products
+- Exit
+
+Project Structure
+- App: Main application code, (main() method)
+- DAO: Data Access Object, classes with methods that interact with the database
+- DBUtil: Database connection classes
+- POJO: Plain Old Java Object, classes that hold data
