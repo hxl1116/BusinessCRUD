@@ -23,7 +23,7 @@ public class BusinessApp {
     private static BusinessDBUtil util;
 
     public static void main(String[] args) {
-        if (args.length == 1) {
+        if (args.length == 2) {
             Thread businessThread = new Thread(() -> {
                 boolean flag = true;
                 String input;
@@ -68,14 +68,14 @@ public class BusinessApp {
                 }
                 System.exit(0);
             });
-            if (initialize(args[0])) businessThread.run();
+            if (initialize(args[0], args[1])) businessThread.run();
         } else System.out.println("Usage: db_filename");
     }
 
-    private static boolean initialize(String filename) {
+    private static boolean initialize(String path, String filename) {
         System.out.println(USAGE);
 
-        BusinessDAO dao = new BusinessDAO(filename);
+        BusinessDAO dao = new BusinessDAO(path, filename);
         util = new BusinessDBUtil(dao);
 
         return true;

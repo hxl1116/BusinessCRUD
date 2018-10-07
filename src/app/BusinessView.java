@@ -26,6 +26,7 @@ public class BusinessView extends Application {
     private static final double EDIT_FIELD_HEIGHT = 25;
 
     private BusinessDBUtil util;
+    private Scene primaryScene;
 
     private TabPane mainContentDisplay;
     private TableView<BusinessProduct> productTable;
@@ -34,7 +35,7 @@ public class BusinessView extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Scene primaryScene = new Scene(mainContentDisplay);
+        init();
         primaryStage.setScene(primaryScene);
         primaryStage.setTitle("Business Database Viewer");
         primaryStage.show();
@@ -42,7 +43,7 @@ public class BusinessView extends Application {
 
     @Override
     public void init() {
-        BusinessDAO dao = new BusinessDAO(this.getParameters().getRaw().get(0));
+        BusinessDAO dao = new BusinessDAO(getParameters().getRaw().get(0), getParameters().getRaw().get(1));
         util = new BusinessDBUtil(dao);
 
         observableProducts = FXCollections.observableArrayList();
@@ -50,6 +51,7 @@ public class BusinessView extends Application {
         productTable = productContentDisplay();
         productTable.setItems(observableProducts);
         mainContentDisplay = mainContentDisplay();
+        primaryScene = new Scene(mainContentDisplay);
     }
 
     private TabPane mainContentDisplay() {

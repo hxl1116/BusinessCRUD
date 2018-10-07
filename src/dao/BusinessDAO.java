@@ -11,14 +11,16 @@ public class BusinessDAO {
     private static final String UPDATE_PRODUCT = "UPDATE Product SET ProductName = ?, ProductPrice = ? WHERE ProductID = ?";
     private static final String DELETE_PRODUCT = "DELETE FROM Product WHERE ProductID = ?";
 
+    private String databasePath;
     private String databaseFilename;
 
-    public BusinessDAO(String name) {
+    public BusinessDAO(String path, String name) {
+        databasePath = path;
         databaseFilename = name;
     }
 
     private Connection connect() {
-        String url = "jdbc:sqlite:.data/" + databaseFilename;
+        String url = String.format("jdbc:sqlite:%s", databasePath + databaseFilename);
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);

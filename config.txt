@@ -1,0 +1,3 @@
+path:C:/Users/hclar/IdeaProjects/BusinessCRUD/.data/
+filename:business.db
+mode:1
