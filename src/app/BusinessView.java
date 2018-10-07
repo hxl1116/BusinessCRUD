@@ -34,8 +34,6 @@ public class BusinessView extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        init();
-
         Scene primaryScene = new Scene(mainContentDisplay);
         primaryStage.setScene(primaryScene);
         primaryStage.setTitle("Business Database Viewer");
@@ -44,14 +42,14 @@ public class BusinessView extends Application {
 
     @Override
     public void init() {
-        BusinessDAO dao = new BusinessDAO("business.db");
+        BusinessDAO dao = new BusinessDAO(this.getParameters().getRaw().get(0));
         util = new BusinessDBUtil(dao);
 
-        mainContentDisplay = mainContentDisplay();
         observableProducts = FXCollections.observableArrayList();
         observableProducts.addAll(util.getProducts());
         productTable = productContentDisplay();
         productTable.setItems(observableProducts);
+        mainContentDisplay = mainContentDisplay();
     }
 
     private TabPane mainContentDisplay() {
