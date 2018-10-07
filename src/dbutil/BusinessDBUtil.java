@@ -29,10 +29,10 @@ public class BusinessDBUtil {
     }
 
     public void createProduct(int id, String name, double price) {
-        BusinessProduct product = new BusinessProduct(id, name, price);
+        BusinessProduct prodToAdd = new BusinessProduct(id, name, price);
 
-        products.add(product);
-        businessDAO.insertProduct(product);
+        products.add(prodToAdd);
+        businessDAO.insertProduct(prodToAdd);
     }
 
     public void updateProduct(int id, String name, double price) {

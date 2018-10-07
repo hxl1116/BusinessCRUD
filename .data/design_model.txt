@@ -10,5 +10,5 @@ Options
 Project Structure
 - App: Main application code, (main() method)
 - DAO: Data Access Object, classes with methods that interact with the database
-- DBUtil: Database connection classes
+- DBUtil: DAO data connection classes
 - POJO: Plain Old Java Object, classes that hold data

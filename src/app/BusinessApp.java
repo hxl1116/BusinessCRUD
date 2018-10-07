@@ -2,6 +2,7 @@ package app;
 
 import dao.BusinessDAO;
 import dbutil.BusinessDBUtil;
+import javafx.stage.Stage;
 import pojo.BusinessProduct;
 
 import java.util.Scanner;
@@ -20,7 +21,6 @@ public class BusinessApp {
     private static Scanner key = new Scanner(System.in);
 
     private static BusinessDBUtil util;
-    private static BusinessDAO dao;
 
     public static void main(String[] args) {
         if (args.length == 1) {
@@ -68,16 +68,15 @@ public class BusinessApp {
                 }
                 System.exit(0);
             });
-
             if (initialize(args[0])) businessThread.run();
         } else System.out.println("Usage: db_filename");
     }
 
     private static boolean initialize(String filename) {
-        dao = new BusinessDAO(filename);
-        util = new BusinessDBUtil(dao);
-
         System.out.println(USAGE);
+
+        BusinessDAO dao = new BusinessDAO(filename);
+        util = new BusinessDBUtil(dao);
 
         return true;
     }
