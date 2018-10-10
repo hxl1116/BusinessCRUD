@@ -37,9 +37,9 @@ public class BusinessDAO {
              ResultSet rstSt = stmt.executeQuery(SELECT_PRODUCTS)) {
             while (rstSt.next()) {
                 data.add(new String[]{String.valueOf(
-                        rstSt.getInt("ProductID")),
-                        rstSt.getString("ProductName"),
-                        String.valueOf(rstSt.getFloat("ProductPrice"))
+                        rstSt.getInt("ID")),
+                        rstSt.getString("Name"),
+                        String.valueOf(rstSt.getFloat("Price"))
                 });
             }
         } catch (SQLException e) {
